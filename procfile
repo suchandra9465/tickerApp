@@ -1,1 +1,1 @@
-web: gunicorn tickerApp.wsgi
+web: gunicorn tickerApp.wsgi --log-file -
