@@ -1,0 +1,518 @@
+{% extends "base.html" %}
+
+{% block content %}          
+          
+          
+          <main class="flex-1" x-data="{showMessage:true}">
+              <div class="py-8 xl:py-10">
+                <div class="max-w-3xl px-4 mx-auto sm:px-6 lg:px-8 xl:max-w-5xl xl:grid xl:grid-cols-3">
+                  <div class="xl:col-span-2 xl:pr-8 xl:border-gray-200">
+                     
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <div class="shadow sm:rounded-md sm:overflow-hidden">
+                              <div class="px-4 py-6 space-y-6 bg-white sm:p-6">
+                             {% if messages %}
+                              {% for msg in messages %}
+                                  <div x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)" class="p-3 bg-green-200 rounded" role="alert">
+                                      <strong>{{msg}}</strong>
+                                      
+                                  </div>
+                              {% endfor %}
+                            {% endif %} 
+                                <div>
+                                  <h3 class="text-lg font-medium leading-6 text-gray-900">Enter The Ticker Name</h3>
+                                  <!-- <p class="mt-1 text-sm text-gray-500">Use a permanent address where you can recieve mail.</p> -->
+                                </div>
+                    
+                                <div class="grid grid-cols-6 gap-6">
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="ticker_name" class="block text-sm font-medium text-gray-700">Ticker Name</label>
+                                    <input type="text" name="ticker_name" id="ticker_name" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                  </div>
+                                  
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="date" class="block text-sm font-medium text-gray-700">Date</label>
+                                    <input type="text" name="date" id="date" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                  </div>
+                    
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                                    <select id="country" name="country" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>US</option>
+                                        <option>China</option>
+                                        <option>Israel</option>
+                                        <option>India</option>
+                                        <option>EU</option>
+                                        <option>Others</option>
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="sector" class="block text-sm font-medium text-gray-700">Sector</label>
+                                    <select id="sector" name="sector" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>Biotech</option>
+                                        <option>MedicalDevices</option>
+                                        <option>Healthcare</option>
+                                        <option>Airline</option>
+                                        <option>Agriculture</option>
+                                        <option>Auto</option>
+                                        <option>CBD</option>
+                                        <option>Chemicals</option>
+                                        <option>Medical Devices</option>
+                                        <option>Auto</option>
+                                        <option>Education</option>
+                                        <option>Energy</option>
+                                        <option>Finance</option>
+                                        <option>Retail</option>
+                                        <option>Gaming-Betting</option>
+                                        <option>Insurance</option>
+                                        <option>IT-Software</option>
+                                        <option>Manufacturing</option>
+                                        <option>Media</option>
+                                        <option>Marketing-Advertising</option>
+                                        <option>Oil&Gas</option>
+                                        <option>Pharma</option>
+                                        <option>SemiConductor</option>
+                                        <option>Telecom</option>
+                                        <option>Transportation</option>
+                                        <option>Others</option>
+                                        <option>N/A</option>
+                                      </select>
+                                  </div>
+                                  
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="biotech_speciality" class="block text-sm font-medium text-gray-700">BioTech Specialty</label>
+                                    <select id="biotech_speciality" name="biotech_speciality" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>Oncology</option>
+                                        <option>Hematology</option>
+                                        <option>Allergy-Immunology</option>
+                                        <option>Alzheimers</option>
+                                        <option>CardioVascular</option>
+                                        <option>COVID</option>
+                                        <option>Depression</option>
+                                        <option>Dermatology</option>
+                                        <option>Diabetes</option>
+                                        <option>Endocrinology</option>
+                                        <option>Gastroenterology</option>
+                                        <option>Infx Disease</option>
+                                        <option>Migraine</option>
+                                        <option>NASH</option>
+                                        <option>Nephrology</option>
+                                        <option>Neurology</option>
+                                        <option>OB-GYN</option>
+                                        <option>Ophthalmology</option>
+                                        <option>Pain</option>
+                                        <option>Psychiatry</option>
+                                        <option>Pulmonology</option>
+                                        <option>Rare</option>
+                                        <option>Rheumatology</option>
+                                        <option>Others</option>
+                                        <option>N/A</option>
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="biotech_data" class="block text-sm font-medium text-gray-700">BioTech Data</label>
+                                    <select id="biotech_data" name="biotech_data" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>PreClin</option>
+                                        <option>PK-PD</option>
+                                        <option>Ph 1 Init</option>
+                                        <option>Ph 1 Int</option>
+                                        <option>Ph 1 Upd</option>
+                                        <option>Ph 1 Final</option>
+                                        <option>Ph 1-2 POC</option>
+                                        <option>Ph 2a Init</option>
+                                        <option>Ph 2a Int</option>
+                                        <option>Ph 2a Upd</option>
+                                        <option>Ph 2a TL</option>
+                                        <option>Ph 2a Data</option>
+                                        <option>Ph 2a Re-Analysis</option>
+                                        <option>Ph 2 Init</option>
+                                        <option>Ph 2 Int</option>
+                                        <option>Ph 2 Upd</option>
+                                        <option>Ph 2 TL</option>
+                                        <option>Ph 2 Data</option>
+                                        <option>Ph 2 Re-Analysis</option>
+                                        <option>Ph 2b Init</option>
+                                        <option>Ph 2b Int</option>
+                                        <option>Ph 2b Upd</option>
+                                        <option>Ph 2b TL</option>
+                                        <option>Ph 2b Data</option>
+                                        <option>Ph 2b Re-Analysis</option>
+                                        <option>Ph 3 Init</option>
+                                        <option>Ph 3 Int</option>
+                                        <option>Ph 3 Upd</option>
+                                        <option>Ph 3 TL</option>
+                                        <option>Ph 3 Data</option>
+                                        <option>Ph 3 Re-Analysis</option>
+                                        <option>Ph 3(1/2) Init</option>
+                                        <option>Ph 3(1/2) Int</option>
+                                        <option>Ph 3 Upd</option>
+                                        <option>Ph 3(1/2) TL</option>
+                                        <option>Ph 3(1/2) Data</option>
+                                        <option>Ph3 (1/2) Re-Analysis</option>
+                                        <option>Ph 3(2/2) Init</option>
+                                        <option>Ph 3(2/2) Int</option>
+                                        <option>Ph 3 Upd</option>
+                                        <option>Ph 3(2/2) TL</option>
+                                        <option>Ph 3(2/2) Data</option>
+                                        <option>Ph 3(2/2) Re-Analysis</option>
+                                        <option>Ph 3(3/3) Data</option>
+                                        <option>Non-Ph 3 Reg Data</option>
+                                        <option>Ph 3b Data</option>
+                                        <option>Ph 4 Data</option>
+                                        <option>Abstract</option>
+
+                                        <option>Abuse Deterrance</option>
+                                        <option>Bioequivalence Data</option>
+                                        <option>Case Report</option>
+                                        <option>Clinical Update</option>
+                                        <option>Competitor Data</option>
+                                        <option>Data Breach</option>
+                                        <option>Data Publication</option>
+                                        <option>Data Re-Hash</option>
+                                        <option>Device Data</option>
+                                        <option>Drug Discontinuation</option>
+                                        <option>EKG Data</option>
+                                        <option>Oral Poster</option>
+                                        <option>Plenary</option>
+                                        <option>Poster</option>
+                                        <option>Post-Pre-Data PR Data</option>
+                                        <option>Pre-Data CC PR</option>
+                                        <option>Pre-Data PR</option>
+                                        <option>Safety Data</option>
+                                        <option>Trial COE PR</option>
+                                        <option>Trial Completion PR</option>
+                                        <option>Trial Death</option>
+                                        <option>Trial Initiation PR</option>
+                                        <option>Others</option>
+                                      </select>
+                                  </div>
+                                  
+                                  
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="regulatory" class="block text-sm font-medium text-gray-700">Regulatory</label>
+                                    <select id="regulatory" name="regulatory" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>NDA Filing</option>
+                                        <option>reNDA Filing</option>
+                                        <option>NDA Issues</option>
+                                        <option>sNDA Filing</option>
+                                        <option>IND Filing</option>
+                                        <option>IND Clearance</option>
+                                        <option>BriefingDocs</option>
+                                        <option>Adcom</option>
+                                        <option>PDUFA</option>
+                                        <option>PDUFA Priority</option>
+                                        <option>PDUFA Rolling</option>
+                                        <option>Re-Briefing Docs</option>
+                                        <option>Re-Adcom</option>
+                                        <option>Re-PDUFA</option>
+                                        <option>Re-Priority PDUFA</option>
+                                        <option>Extended PDUFA</option>
+                                        <option>Delayed PDUFA</option>
+                                        <option>Re-Adcom#2</option>
+                                        <option>Re-PDUFA#2</option>
+                                        <option>Re-PDUFA#3</option>
+                                        <option>sPDUFA/FDA Appeal PR</option>
+                                        <option>FDA Appeal Ruling</option>
+                                        <option>CHMP Opinion</option>
+                                        <option>CHMP Decision</option>
+                                        <option>Non-US-EMA Decision</option>
+                                        <option>FDA BTD</option>
+                                        <option>FDA FTD</option>
+                                        <option>FDA ODD</option>
+                                        <option>FDA RMAT</option>
+                                        <option>FDA SPA</option>
+                                        <option>FDA RPDD Voucher</option>
+                                        <option>FDA Partial Hold</option>
+                                        <option>FDA Full Hold</option>
+                                        <option>FDA Partial Hold Removal</option>
+                                        <option>FDA Full Hold Removal</option>
+                                        <option>FDA Pre-BLA Meeting</option>
+                                        <option>FDA Type A Meeting</option>
+                                        <option>FDA Type B Meeting</option>
+                                        <option>FDA Type C Meeting</option>
+                                        <option>FDA Form 483 CMC Issues</option>
+                                        <option>FDA CMC Resolution</option>
+                                        <option>FDA PMA Filing</option>
+                                        <option>FDA PMA Approval</option>
+                                        <option>510-K Filing</option>
+                                        <option>510-K Clearance</option>
+                                        <option>MAA Filing</option>
+                                        <option>J-Code</option>
+                                        <option>Formulary Addition</option>
+
+                                        <option>Insurer Rejection</option>
+                                        <option>Lab Coverage</option>
+                                        <option>IRB Approval</option>
+                                        <option>EMA PRIME</option>
+                                        <option>EMA ODD</option>
+                                        <option>CE Mark</option>
+                                        <option>Competitor Regulatory</option>
+                                        <option>Others</option>
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="others" class="block text-sm font-medium text-gray-700">Other</label>
+                                    <select id="others" name="others" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>Acquisition of Private Co</option>
+                                        <option>Activist Investor Buy</option>
+                                        <option>Ad Platform Integration</option>
+                                        <option>Amazon Deal</option>
+                                        <option>Amazon-Ebay-Walgreens-Walmart Launch</option>
+                                        <option>Analyst Downgrade</option>
+                                        <option>Analyst Init Buy</option>
+                                        <option>Analyst Init OW</option>
+                                        <option>Analyst Init Strong Buy</option>
+                                        <option>Analyst Upgrade Buy</option>
+                                        <option>Analyst Upgrade Non-Buy</option>
+                                        <option>Asset Divesture</option>
+                                        <option>ATM Cancellation</option>
+                                        <option>ATM Offering</option>
+                                        <option>BARDA Funding</option>
+                                        <option>BO Denial</option>
+                                        <option>BO Rumor</option>
+                                        <option>BO Termination</option>
+                                        <option>Chapter 11 Bankruptcy</option>
+                                        <option>China Licensing Deal</option>
+                                        <option>Commercialization Deal</option>
+                                        <option>Company Media Rebuttal</option>
+                                        <option>Competitor BO</option>
+                                        <option>Congress Data Question</option>
+                                        <option>Debt Forbearance</option>
+                                        <option>Device Launch</option>
+                                        <option>Device Use PR</option>
+                                        <option>Distribution Deal</option>
+                                        <option>Drug Launch</option>
+                                        <option>Drug License Termination</option>
+                                        <option>Drug Licensing</option>
+                                        <option>Drug Partnership</option>
+                                        <option>Drug Supply Deal</option>
+                                        <option>Earnings Beat</option>
+                                        <option>Earnings Beat</option>
+                                        <option>Earnings Forecast Boost</option>
+                                        <option>Earnings Loss</option>
+                                        <option>EU Licensing Deal</option>
+                                        <option>Ex-US-EU Licensing Deal</option>
+                                        <option>Fund Buy</option>
+                                        <option>Government Funding</option>
+                                        <option>Govt-DoD Contract</option>
+                                        <option>Insider Buy</option>
+                                        <option>Insider Resignation-Departure</option>
+                                        <option>Insider Sale</option>
+                                        <option>Japan Licensing Deal</option>
+                                        <option>Litigation Filing</option>
+                                        <option>Litigation Ruling</option>
+
+                                        <option>Loan Financing</option>
+                                        <option>Manufacturing Deal</option>
+                                        <option>Media Dump Article</option>
+                                        <option>Media Dump</option>
+                                        <option>Media Pump Article</option>
+                                        <option>Media Pump</option>
+                                        <option>Merger Termination</option>
+                                        <option>Merger w Private Co</option>
+                                        <option>NASA Contract</option>
+                                        <option>NASDAQ Compliance</option>
+                                        <option>NASDAQ Notice</option>
+                                        <option>New CEO Hire</option>
+                                        <option>NFT Advance</option>
+                                        <option>NFT Deal</option>
+                                        <option>NIH Grant</option>
+                                        <option>Non-US Patent</option>
+                                        <option>Offering Cancellation</option>
+                                        <option>Offering Termination</option>
+                                        <option>Other Company Drug Licensing</option>
+                                        <option>Patent Challenge</option>
+                                        <option>Patent Dispute</option>
+                                        <option>Patent Ruling</option>
+                                        <option>Patent Settlement</option>
+                                        <option>Pharma Drug Collab</option>
+                                        <option>Prelim Earnings Beat</option>
+                                        <option>Pre-Production Order</option>
+                                        <option>Private Placement</option>
+                                        <option>Product Contract</option>
+                                        <option>Product-Tech Enhancement</option>
+                                        <option>Property Sale</option>
+                                        <option>Public Offering</option>
+                                        <option>Purchase Order</option>
+                                        <option>Reddit Pump</option>
+                                        <option>Reddit Pump</option>
+                                        <option>Restructuring/Shareholder Letter</option>
+                                        <option>Shareholder Letter</option>
+                                        <option>Strategic Alternatives PR</option>
+                                        <option>Strategic Investment</option>
+                                        <option>Sympathy Play</option>
+                                        <option>TV Appearance</option>
+                                        <option>Uncatalyzed Drop</option>
+                                        <option>Uncatalyzed Rise</option>
+                                        <option>University Drug Collab</option>
+                                        <option>US Licensing Deal</option>
+                                        <option>US Patent</option>
+                                        <option>Other</option>
+                                        
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="catalyst_expectation" class="block text-sm font-medium text-gray-700">Catalyst Expectation</label>
+                                    <select id="catalyst_expectation" name="catalyst_expectation" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>Unknown</option>
+                                        <option>Positive</option>
+                                        <option>Negative</option>
+                                        <option>90%+ Positive</option>
+                                        <option>90%+ Negative</option>
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="catalyst_outcome" class="block text-sm font-medium text-gray-700">Catalyst Outcome</label>
+                                    <select id="catalyst_outcome" name="catalyst_outcome" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>Positive(+)</option>
+                                        <option>Negative(-)</option>
+                                        <option>Positive w Negatives(+/-)</option>
+                                        <option>Negative w Positives(-/+)</option>
+                                        <option>Neutral(?)</option>
+                                        <option>Data CRL</option>
+                                        <option>CMC CRL</option>
+                                        <option>Delay</option>
+                                        <option>NA</option>
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="activeshelf_ATM" class="block text-sm font-medium text-gray-700">Active Shelf/ATM</label>
+                                    <select id="activeshelf_ATM" name="activeshelf_ATM" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                        
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="catalyst_timing" class="block text-sm font-medium text-gray-700">Catalyst Timing</label>
+                                    <select id="catalyst_timing" name="catalyst_timing" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>On Schedule</option>
+                                        <option>Early</option>
+                                        <option>Late</option>
+                                        <option>Very Late</option>
+                                        <option>Delayed</option>
+                                        <option>Not on Radar</option>
+                                        
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="catalyst_PR" class="block text-sm font-medium text-gray-700">Catalyst PR</label>
+                                    <select id="catalyst_PR" name="catalyst_PR" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>PrM</option>
+                                        <option>ID</option>
+                                        <option>AH</option>
+                                        
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="pre_Catalyst_1m_RU_RD" class="block text-sm font-medium text-gray-700">Pre-Catalyst 1m RU/RD</label>
+                                    <input type="text" name="pre_Catalyst_1m_RU_RD" id="pre_Catalyst_1m_RU_RD" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        
+                                      </select>
+                                  </div>
+                                  
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="Pre_Catalyst_1m_RU_RD_Pattern" class="block text-sm font-medium text-gray-700">Pre-Catalyst 1m RU/RD Pattern</label>
+                                    <select id="Pre_Catalyst_1m_RU_RD_Pattern" name="Pre_Catalyst_1m_RU_RD_Pattern" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option> 5%RD-5%RU</option>
+                                        <option>5-20%RD</option>
+                                        <option>20-35%RD</option>
+                                        <option>35%+RD</option>
+                                        <option>5-20%RU</option>
+                                        <option>20-35%RU</option>
+                                        <option>35%+RU</option>
+                                        
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="option_percent_Anticipated_Move" class="block text-sm font-medium text-gray-700">Option % Anticipated Move</label>
+                                    <select id="option_percent_Anticipated_Move" name="option_percent_Anticipated_Move" autocomplete="firewall_type" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <option>Low (less than 10%) </option>
+                                        <option>Mod(11-25%)</option>
+                                        <option>High(25-50%)</option>
+                                        <option>Very High(50+%)</option>
+                                        <option>NA</option>
+                                        
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="volume" class="block text-sm font-medium text-gray-700">Volume</label>
+                                    <input type="text" name="volume" id="volume" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        
+                                      </select>
+                                  </div>
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="volume_dollar" class="block text-sm font-medium text-gray-700">Volume $</label>
+                                    <input type="text" name="volume_dollar" id="volume_dollar" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        
+                                      </select>
+                                  </div>
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="catalyst_intraday_moves_percent" class="block text-sm font-medium text-gray-700">Catalyst Intraday Moves %</label>
+                                    <input type="text" name="catalyst_intraday_moves_percent" id="catalyst_intraday_moves_percent" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        
+                                      </select>
+                                  </div>
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="catalyst_1d_move_percent" class="block text-sm font-medium text-gray-700">Catalyst 1day Move %</label>
+                                    <input type="text" name="catalyst_1d_move_percent" id="catalyst_1d_move_percent" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        
+                                      </select>
+                                  </div>
+
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="post_Catalyst_1d_RU_RD" class="block text-sm font-medium text-gray-700">Post-Catalyst 1d RU/RD %</label>
+                                    <input type="text" name="post_Catalyst_1d_RU_RD" id="post_Catalyst_1d_RU_RD" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        
+                                      </select>
+                                  </div>
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="post_Catalyst_1w_RU_RD" class="block text-sm font-medium text-gray-700">Post-Catalyst 1w RU/RD %</label>
+                                    <input type="text" name="post_Catalyst_1w_RU_RD" id="post_Catalyst_1w_RU_RD" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        
+                                      </select>
+                                  </div>
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="post_Catalyst_2w_RU_RD" class="block text-sm font-medium text-gray-700">Post-Catalyst 2w RU/RD %</label>
+                                    <input type="text" name="post_Catalyst_2w_RU_RD" id="post_Catalyst_2w_RU_RD" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        
+                                      </select>
+                                  </div>
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="post_Catalyst_3w_RU_RD" class="block text-sm font-medium text-gray-700">Post-Catalyst 3w RU/RD %</label>
+                                    <input type="text" name="post_Catalyst_3w_RU_RD" id="post_Catalyst_3w_RU_RD" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        
+                                      </select>
+                                  </div>
+
+
+                                </div>
+                              </div>
+                              <div class="px-4 py-3 text-right bg-gray-50 sm:px-6">
+                                <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                  Submit
+                                </button>
+                              </div>
+                            </div>
+                          </form>   
+                   
+                  </div>
+                 
+                </div>
+              </div>
+            </main>
+
+{% endblock content %}
