@@ -9,7 +9,7 @@
                   <div class="xl:col-span-2 xl:pr-8 xl:border-gray-200">
                      
                         <form action="#" method="POST">
-                            {% csrf_token %}
+                          {% csrf_token %}
                             <div class="shadow sm:rounded-md sm:overflow-hidden">
                               <div class="px-4 py-6 space-y-6 bg-white sm:p-6">
                              {% if messages %}
@@ -467,7 +467,7 @@
                                       </select>
                                   </div>
                                   <div class="col-span-6 sm:col-span-3">
-                                    <label for="catalyst_1d_move_percent" class="block text-sm font-medium text-gray-700">Catalyst 1day Move %</label>
+                                    <label for="catalyst_1d_move_percent" class="block text-sm font-medium text-gray-700">Catalyst 1d Move %</label>
                                     <input type="text" name="catalyst_1d_move_percent" id="catalyst_1d_move_percent" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                                         
                                       </select>
@@ -494,6 +494,12 @@
                                   <div class="col-span-6 sm:col-span-3">
                                     <label for="post_Catalyst_3w_RU_RD" class="block text-sm font-medium text-gray-700">Post-Catalyst 3w RU/RD %</label>
                                     <input type="text" name="post_Catalyst_3w_RU_RD" id="post_Catalyst_3w_RU_RD" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        
+                                      </select>
+                                  </div>
+                                  <div class="col-span-6 sm:col-span-3">
+                                    <label for="technicalIndicators" class="block text-sm font-medium text-gray-700">Technical Indicators</label>
+                                    <input type="text" name="technicalIndicators" id="technicalIndicators" autocomplete="given-name" class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                                         
                                       </select>
                                   </div>

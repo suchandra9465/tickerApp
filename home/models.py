@@ -43,6 +43,8 @@ class Info(models.Model):
     averageVolume10days = models.CharField(max_length=50)
     
     totalCashPerShare = models.CharField(max_length=50)
+    technicalIndicators = models.TextField() 
+    
     
     
     
