@@ -1,8 +1,11 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponseRedirect
 
 # from django.utils import timezone
 import yfinance as yf
 from .models import Info
+  
+
 
 # Create your views here.
 def form_method(request):
@@ -25,7 +28,7 @@ def form_method(request):
         activeshelf_ATM = request.POST.get('activeshelf_ATM')
         catalyst_timing = request.POST.get('catalyst_timing')
         catalyst_PR = request.POST.get('catalyst_PR')
-        pre_Catalyst_1m_RU_RD = request.POST.get('pre_Catalyst_1m_RU_RD')
+        # pre_Catalyst_1m_RU_RD = request.POST.get('pre_Catalyst_1m_RU_RD')
         Pre_Catalyst_1m_RU_RD_Pattern = request.POST.get('Pre_Catalyst_1m_RU_RD_Pattern')
         enterpriseValue = msft.info['enterpriseValue']
         marketCap = msft.info['marketCap']
@@ -55,7 +58,7 @@ def form_method(request):
         post_Catalyst_2w_RU_RD = request.POST.get('post_Catalyst_2w_RU_RD')
         post_Catalyst_3w_RU_RD = request.POST.get('post_Catalyst_3w_RU_RD')
         technicalIndicators = request.POST.get('technicalIndicators')
-        data_entry = Info(ticker_name=ticker_name,date=date,country=country,sector=sector,biotech_Speciality=biotech_speciality,biotech_Data=biotech_data,regulatory=regulatory,other=others,catalyst_Expectation=catalyst_expectation,catalyst_Outcome=catalyst_outcome,activeshelf_ATM=activeshelf_ATM,catalyst_Timing=catalyst_timing,catalyst_PR=catalyst_PR,pre_Catalyst_1m_RU_RD=pre_Catalyst_1m_RU_RD,Pre_Catalyst_1m_RU_RD_Pattern=Pre_Catalyst_1m_RU_RD_Pattern,enterprise_Value=enterpriseValue,market_Cap=marketCap,profitMargins=profitMargins,fiftyTwoWeekHigh=fiftyTwoWeekHigh,totalRevenue=totalRevenue,averageVolume10days=averageVolume10days,floatShares=floatShares,heldPercentInsiders=heldPercentInsiders,heldPercentInstitutions=heldPercentInstitutions,shortPercentOfFloat=shortPercentOfFloat,totalCashPerShare=totalCashPerShare,totalCash=totalCash,totalDebt=totalDebt,book_Value=bookValue,operatingCashflow=operatingCashflow,Outstanding_Shares=sharesOutstanding,volume=volume,volume_dollar=volume_dollar,catalyst_1d_move_percent=catalyst_1d_move_percent,option_percent_Anticipated_Move=option_percent_Anticipated_Move,catalyst_intraday_moves_percent=catalyst_intraday_moves_percent,post_Catalyst_1d_RU_RD=post_Catalyst_1d_RU_RD,post_Catalyst_1w_RU_RD=post_Catalyst_1w_RU_RD,post_Catalyst_2w_RU_RD=post_Catalyst_2w_RU_RD,post_Catalyst_3w_RU_RD=post_Catalyst_3w_RU_RD,technicalIndicators=technicalIndicators)
+        data_entry = Info(ticker_name=ticker_name,date=date,country=country,sector=sector,biotech_Speciality=biotech_speciality,biotech_Data=biotech_data,regulatory=regulatory,other=others,catalyst_Expectation=catalyst_expectation,catalyst_Outcome=catalyst_outcome,activeshelf_ATM=activeshelf_ATM,catalyst_Timing=catalyst_timing,catalyst_PR=catalyst_PR,Pre_Catalyst_1m_RU_RD_Pattern=Pre_Catalyst_1m_RU_RD_Pattern,enterprise_Value=enterpriseValue,market_Cap=marketCap,profitMargins=profitMargins,fiftyTwoWeekHigh=fiftyTwoWeekHigh,totalRevenue=totalRevenue,averageVolume10days=averageVolume10days,floatShares=floatShares,heldPercentInsiders=heldPercentInsiders,heldPercentInstitutions=heldPercentInstitutions,shortPercentOfFloat=shortPercentOfFloat,totalCashPerShare=totalCashPerShare,totalCash=totalCash,totalDebt=totalDebt,book_Value=bookValue,operatingCashflow=operatingCashflow,Outstanding_Shares=sharesOutstanding,volume=volume,volume_dollar=volume_dollar,catalyst_1d_move_percent=catalyst_1d_move_percent,option_percent_Anticipated_Move=option_percent_Anticipated_Move,catalyst_intraday_moves_percent=catalyst_intraday_moves_percent,post_Catalyst_1d_RU_RD=post_Catalyst_1d_RU_RD,post_Catalyst_1w_RU_RD=post_Catalyst_1w_RU_RD,post_Catalyst_2w_RU_RD=post_Catalyst_2w_RU_RD,post_Catalyst_3w_RU_RD=post_Catalyst_3w_RU_RD,technicalIndicators=technicalIndicators)
         data_entry.save()
         
         return redirect('form_method')
@@ -103,3 +106,9 @@ def dashboard(request):
         
         
     return render(request,'home/dashboard.html',context)
+
+def admin(response):
+    return redirect('/admin')
+
+
+
