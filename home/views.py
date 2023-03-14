@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponseRedirect
-
+from django.http import HttpResponseRedirect, HttpResponse
 # from django.utils import timezone
+
+import csv
 import yfinance as yf
 from .models import Info
+from django.views.generic import TemplateView
   
 
 
@@ -112,3 +114,28 @@ def admin(response):
 
 
 
+
+class ExportCsvView(TemplateView):
+    template_name = "dashboard.html"
+
+    def get(self, request, *args, **kwargs):
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="export.csv"'
+
+        field_names = [f.name for f in Info._meta.get_fields()]
+        writer = csv.writer(response)
+        writer.writerow(field_names)
+
+        for info in Info.objects.all():
+            writer.writerow([info.id, info.ticker_name, info.date, info.country, info.sector, info.biotech_Speciality,
+                            info.biotech_Data, info.regulatory, info.other, info.catalyst_Expectation, 
+                            info.catalyst_Outcome, info.activeshelf_ATM, info.catalyst_Timing, info.catalyst_PR,
+                            info.Pre_Catalyst_1m_RU_RD_Pattern, info.volume, info.volume_dollar, info.catalyst_1d_move_percent,
+                            info.option_percent_Anticipated_Move, info.catalyst_intraday_moves_percent, info.post_Catalyst_1d_RU_RD,
+                            info.post_Catalyst_1w_RU_RD, info.post_Catalyst_2w_RU_RD, info.post_Catalyst_3w_RU_RD, info.market_Cap,
+                            info.enterprise_Value, info.book_Value, info.heldPercentInstitutions, info.heldPercentInsiders,
+                            info.shortPercentOfFloat, info.Outstanding_Shares, info.floatShares, info.totalCash, info.totalDebt,
+                            info.operatingCashflow, info.profitMargins, info.fiftyTwoWeekHigh, info.totalRevenue,
+                            info.averageVolume10days, info.totalCashPerShare, info.technicalIndicators])
+
+        return response
